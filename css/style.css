@@ -21,6 +21,8 @@ body {
     background-color: white;
     padding: 20px;
     border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 1px 4px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0px 0px 1px 4px rgba(0, 0, 0, 0.1);
     box-shadow: 0px 0px 1px 4px rgba(0, 0, 0, 0.1); }
     .main-content .listing .listing-header {
       border-bottom: 1px solid #e8e8e8;
@@ -31,8 +33,12 @@ body {
         font-weight: 300; }
     .main-content .listing .listing-search {
       padding: 20px 0; }
+      .main-content .listing .listing-search .search-item {
+        margin: 0 5px; }
       .main-content .listing .listing-search .search-input {
         min-width: 300px; }
+      .main-content .listing .listing-search button {
+        padding: 6px 20px; }
     .main-content .listing .listing-content table {
       border-radius: 5px; }
       .main-content .listing .listing-content table th {
@@ -48,3 +54,8 @@ body {
           padding: 15px 20px; }
           .main-content .listing .listing-content table tbody td:first-child {
             text-align: left; }
+        .main-content .listing .listing-content table tbody tr {
+          cursor: pointer; }
+          .main-content .listing .listing-content table tbody tr:hover {
+            background-color: #2f8fbb;
+            color: white; }
