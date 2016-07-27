@@ -33,3 +33,18 @@ body {
       padding: 20px 0; }
       .main-content .listing .listing-search .search-input {
         min-width: 300px; }
+    .main-content .listing .listing-content table {
+      border-radius: 5px; }
+      .main-content .listing .listing-content table th {
+        border: none;
+        background-color: #e9ebec;
+        padding: 20px;
+        color: #686868; }
+        .main-content .listing .listing-content table th:nth-last-child(-n+3) {
+          text-align: center; }
+      .main-content .listing .listing-content table tbody {
+        color: #686868; }
+        .main-content .listing .listing-content table tbody td {
+          padding: 15px 20px; }
+          .main-content .listing .listing-content table tbody td:first-child {
+            text-align: left; }
