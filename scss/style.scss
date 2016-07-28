@@ -71,6 +71,7 @@ body {
             &:hover {
               background-color: #2f8fbb;
               color: white;
+              @include transition (all, 0.3s, ease);
             }
           }
         }
