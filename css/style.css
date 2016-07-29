@@ -64,3 +64,11 @@ body {
             -ms-transition: all 0.3s ease;
             -o-transition: all 0.3s ease;
             transition: all 0.3s ease; }
+    .main-content .listing .listing-content .pagination-buttons .pagination {
+      margin: 0; }
+      .main-content .listing .listing-content .pagination-buttons .pagination li a {
+        margin: 0 3px;
+        border-radius: 3px;
+        padding: 3px 10px;
+        color: #686868;
+        background-color: #f9f9f9; }
