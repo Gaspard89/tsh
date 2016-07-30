@@ -12,6 +12,7 @@ $(function() {
         self.currentText = ko.observable();
         self.temporaryValue = ko.observable();
         self.payments = ko.observable();
+        self.icons = ko.observable();
 
         //Behaviours
         self.currentRating('');

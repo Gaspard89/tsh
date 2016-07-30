@@ -21,26 +21,52 @@ lastClass:"last",firstClass:"first"},l.data("settings")||{},p||{});if(0>=a.total
 h(this);if(!b.hasClass(a.disabledClass)&&!b.hasClass(a.activeClass)){var c=parseInt(b.attr("data-lp"),10);l.find("ul.bootpag").each(function(){m(h(this),c)});l.trigger("page",c)}});m(c,a.page)})}})(jQuery,window);
 
 $(function (){
-// var url = "http://test-api.kuria.tshdev.io/";
-// var data = $.parseJSON(
-//         $.ajax({
-//             url: url,
-//             async: false,
-//             dataType: 'json'
-//         }).responseText
-//     );
-//
-//
-// console.log(data.payments);
-// ko.applyBindings(data, document.getElementById('listingTable'));
-
   $('.page-navigation').bootpag({
      total: 15,
      page: 1,
      maxVisible: 4
   }).on('page', function(event, num){
-      // $(".content2").html("Page " + num); // or some ajax content loading...
+      //
   });
+});
+
+$(function(){
+var costam = function(){
+  var ratingElements = $(".ratingValue");
+
+  for(var i = 0; i < ratingElements.length; i++) {
+    var el = ratingElements[i];
+    var ratingValue = $(el).html();
+    $(el).html('');
+
+    for (var j = 0; j < 5; j++){
+
+      if(ratingValue > 0) {
+        //tutaj daje kolorowa
+        $(el).append('<span>k</span>');
+        ratingValue--;
+        console.log(el);
+      }
+      else {
+        //szara
+        $(el).append('<span>c</span>');
+        console.log(el);
+      }
+    }
+  }
+
+  // console.log(ratingValue);
+  // console.log(ratingElements);
+};
+
+$(".bootpag").on('click','*', function (event) {
+  var page = $(this).attr('data-lp');
+  costam(page);
+});
+window.onload = costam;
+$("#searchButton").click(costam);
+$("#dropdown").change(costam);
+
 });
 
 $(function() {
@@ -57,6 +83,7 @@ $(function() {
         self.currentText = ko.observable();
         self.temporaryValue = ko.observable();
         self.payments = ko.observable();
+        self.icons = ko.observable();
 
         //Behaviours
         self.currentRating('');
