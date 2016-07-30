@@ -10,37 +10,42 @@ $(function() {
         self.currentRating = ko.observable();
         self.currentPage = ko.observable();
         self.currentText = ko.observable();
-        self.tescik = ko.observable();
+        self.temporaryValue = ko.observable();
+        self.payments = ko.observable();
 
         //Behaviours
-        self.setCurrentText = function() {
-            self.currentText(self.tescik());
-        };
-
-        self.resetCurrentText = function() {
-            self.currentText('');
-        };
-
         self.currentRating('');
         self.currentText('');
         self.currentPage(1);
 
-        self.ProcessRequest = function() {
-            var url = baseUrl +
-                'rating=' + self.currentRating() + '&' +
-                'page=' + self.currentPage();
+        self.ProcessRequest = function(url) {
 
+            if(self.currentPage() !== undefined) {
+                var data = $.parseJSON(
+                  $.ajax({
+                      url: url,
+                      async: false,
+                      dataType: 'json'
+                  }).responseText
+              );
+              self.payments(data.payments);
+              console.log(data);
+              console.log(url);
+          }
+        };
 
+        self.setCurrentText = function() {
+            self.currentText(self.temporaryValue());
+            var url = baseUrl + 'query=' + self.currentText();
 
-            var data = $.parseJSON(
-                $.ajax({
-                    url: url,
-                    async: false,
-                    dataType: 'json'
-                }).responseText
-            );
-            console.log(url);
-            console.log(data);
+            self.ProcessRequest(url);
+        };
+
+        self.resetCurrentText = function() {
+            self.currentText('');
+            self.temporaryValue('');
+            var url = baseUrl + 'page=1';
+            self.ProcessRequest(url);
         };
 
         $(".bootpag").on('click','*', function (event) {
@@ -51,27 +56,13 @@ $(function() {
         ko.computed(function() {
             self.currentPage();
             self.currentRating();
-            self.ProcessRequest();
+
+            var url = baseUrl +
+                'rating=' + self.currentRating() + '&' +
+                'page=' + self.currentPage();
+            self.ProcessRequest(url);
         });
 
     }
     ko.applyBindings(new apiModel());
 });
-
-
-
-
-
-
-
-//
-// self.show = function(){
-//         var data = $.parseJSON(
-//           $.ajax({
-//               url: currentUrl+'rating='+self.currentRating(),
-//               async: false,
-//               dataType: 'json'
-//           }).responseText
-//       );
-//     };
-//
