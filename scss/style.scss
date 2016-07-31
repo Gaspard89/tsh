@@ -66,11 +66,30 @@ body {
               text-align: left;
             }
           }
+          .ratingValue {
+            padding: 12px 20px;
+            .rating-pound {
+              padding: 0 7px;
+              margin: 0 5px;
+              font-weight: bold;
+              font-size: 18px;
+              border-radius: 50px;
+            }
+            .active {
+              color: $white;
+              background-color: $blue;
+              border: 1px solid $blue;
+            }
+            .disabled {
+              color: $dark-gray;
+              background-color: $darkWhite;
+              border: 1px solid $gray;
+            }
+          }
           tr {
             cursor: pointer;
             &:hover {
-              background-color: #2f8fbb;
-              color: white;
+              background-color: $light-gray;
               @include transition (all, 0.3s, ease);
             }
           }
@@ -84,6 +103,17 @@ body {
           padding: 3px 10px;
           color: $dark-gray;
           background-color: #f9f9f9;
+          &:active {
+            @include box-shadow(0px, 0px, 10px, 0px, rgba(0,0,0,0.75), inset);
+            background-color: $gray;
+          }
+        }
+        li.active a {
+          @include box-shadow(0px, 0px, 10px, 0px, rgba(0,0,0,0.75), inset);
+          background-color: $dark-gray;
+          border: none;
+          color: $white;
+          font-weight: bold;
         }
       }
     }

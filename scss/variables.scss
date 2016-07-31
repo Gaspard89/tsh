@@ -1,23 +1,37 @@
 /*********************
 VARIABLES AND MIXINS
 *********************/
-
 $font-stack: 'Source Sans Pro', sans-serif;
 $gray: #e8e8e8;
 $dark-gray: #686868;
 $light-gray: #e9ebec;
 $blue: #2f8fbb;
+$cornBlue: #61bce9;
+$darkWhite: #fcfdfd;
+$white: #ffffff;
 
-
-@mixin box-shadow($horizontal, $vertical, $blur, $spread, $color) {
-    -webkit-box-shadow:$horizontal $vertical $blur $spread $color;
-    -moz-box-shadow:$horizontal $vertical $blur $spread $color;
-    box-shadow:$horizontal $vertical $blur $spread $color;
-  }
+@mixin box-shadow($horizontal, $vertical, $blur, $spread, $color, $inset:"") {
+    -webkit-box-shadow: $horizontal $vertical $blur $spread $color #{$inset};
+    -moz-box-shadow: $horizontal $vertical $blur $spread $color #{$inset};
+    box-shadow: $horizontal $vertical $blur $spread $color #{$inset};
+}
 @mixin transition($what: all, $time: 0.2s, $how: ease-in-out) {
     -webkit-transition: $what $time $how;
-    -moz-transition:    $what $time $how;
-    -ms-transition:     $what $time $how;
-    -o-transition:      $what $time $how;
-    transition:         $what $time $how;
-  }
+    -moz-transition: $what $time $how;
+    -ms-transition: $what $time $how;
+    -o-transition: $what $time $how;
+    transition: $what $time $how;
+}
+
+@mixin breakpoint($point) {
+    @else if $point == tablet {
+         @media (max-width: 768px){
+            @content;
+        }
+    }
+    @else if $point == mobileonly {
+         @media (max-width: 320px){
+            @content;
+        }
+    }
+}

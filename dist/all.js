@@ -20,55 +20,6 @@ lastClass:"last",firstClass:"first"},l.data("settings")||{},p||{});if(0>=a.total
 1;b<=Math.min(a.total,a.maxVisible);b++)c=c.concat(['<li data-lp="',b,'"><a href="',g(b),'">',b,"</a></li>"]);a.next&&(b=a.leaps&&a.total>a.maxVisible?Math.min(a.maxVisible+1,a.total):2,c=c.concat(['<li data-lp="',b,'" class="',a.nextClass,'"><a href="',g(b),'">',a.next,"</a></li>"]));a.firstLastUse&&(c=c.concat(['<li data-lp="',a.total,'" class="last"><a href="',g(a.total),'">',a.last,"</a></li>"]));c.push("</ul>");d.find("ul.bootpag").remove();d.append(c.join(""));c=d.find("ul.bootpag");d.find("li").click(function(){var b=
 h(this);if(!b.hasClass(a.disabledClass)&&!b.hasClass(a.activeClass)){var c=parseInt(b.attr("data-lp"),10);l.find("ul.bootpag").each(function(){m(h(this),c)});l.trigger("page",c)}});m(c,a.page)})}})(jQuery,window);
 
-$(function (){
-  $('.page-navigation').bootpag({
-     total: 15,
-     page: 1,
-     maxVisible: 4
-  }).on('page', function(event, num){
-      //
-  });
-});
-
-$(function(){
-var costam = function(){
-  var ratingElements = $(".ratingValue");
-
-  for(var i = 0; i < ratingElements.length; i++) {
-    var el = ratingElements[i];
-    var ratingValue = $(el).html();
-    $(el).html('');
-
-    for (var j = 0; j < 5; j++){
-
-      if(ratingValue > 0) {
-        //tutaj daje kolorowa
-        $(el).append('<span>k</span>');
-        ratingValue--;
-        console.log(el);
-      }
-      else {
-        //szara
-        $(el).append('<span>c</span>');
-        console.log(el);
-      }
-    }
-  }
-
-  // console.log(ratingValue);
-  // console.log(ratingElements);
-};
-
-$(".bootpag").on('click','*', function (event) {
-  var page = $(this).attr('data-lp');
-  costam(page);
-});
-window.onload = costam;
-$("#searchButton").click(costam);
-$("#dropdown").change(costam);
-
-});
-
 $(function() {
     var baseUrl = "http://test-api.kuria.tshdev.io/?";
 
@@ -81,33 +32,31 @@ $(function() {
         self.currentRating = ko.observable();
         self.currentPage = ko.observable();
         self.currentText = ko.observable();
-        self.temporaryValue = ko.observable();
+        self.modalHtml = ko.observable();
         self.payments = ko.observable();
         self.icons = ko.observable();
 
-        //Behaviours
+        //Set up
         self.currentRating('');
         self.currentText('');
         self.currentPage(1);
 
         self.ProcessRequest = function(url) {
 
-            if(self.currentPage() !== undefined) {
+            if (self.currentPage() !== undefined) {
                 var data = $.parseJSON(
-                  $.ajax({
-                      url: url,
-                      async: false,
-                      dataType: 'json'
-                  }).responseText
-              );
-              self.payments(data.payments);
-              console.log(data);
-              console.log(url);
-          }
+                    $.ajax({
+                        url: url,
+                        async: false,
+                        dataType: 'json'
+                    }).responseText
+                );
+                self.payments(data.payments);
+            }
         };
 
+        //buttons
         self.setCurrentText = function() {
-            self.currentText(self.temporaryValue());
             var url = baseUrl + 'query=' + self.currentText();
 
             self.ProcessRequest(url);
@@ -115,24 +64,22 @@ $(function() {
 
         self.resetCurrentText = function() {
             self.currentText('');
-            self.temporaryValue('');
             var url = baseUrl + 'page=1';
             self.ProcessRequest(url);
         };
 
-                self.modalHtml = ko.observable();
-        self.showModal = function(item){
-          console.log(item);
-          console.log(item.payment_supplier);
-          self.modalHtml('<div id="modal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="gridSystemModalLabel">Modal title</h4><p>'item.payment_supplier'</p></div></div></div>');
-        };
-
-
-        $(".bootpag").on('click','*', function (event) {
-          var page = $(this).attr('data-lp');
-          self.currentPage(page);
+        $(".bootpag").on('click', '*', function(event) {
+            var page = $(this).attr('data-lp');
+            self.currentPage(page);
         });
 
+        //Modal
+        self.showModal = function(item) {
+            self.modalHtml('<div id="modal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="gridSystemModalLabel">Modal title</h4><p>' + item.payment_supplier + '</p><p>' + item.payment_ref + '</p><p>' + item.payment_cost_rating + '</p><p>' + item.payment_amount + '</p></div></div></div>');
+
+        };
+
+        //Listener
         ko.computed(function() {
             self.currentPage();
             self.currentRating();
@@ -142,7 +89,47 @@ $(function() {
                 'page=' + self.currentPage();
             self.ProcessRequest(url);
         });
-
     }
     ko.applyBindings(new apiModel());
+});
+
+$(function (){
+  $('.page-navigation').bootpag({
+     total: 15,
+     page: 1,
+     maxVisible: 4
+  }).on('page', function(event, num){
+      //
+  });
+});
+
+$(function() {
+    var ratingFunction = function() {
+        var ratingElements = $(".ratingValue");
+
+        for (var i = 0; i < ratingElements.length; i++) {
+            var el = ratingElements[i];
+            var ratingValue = $(el).html();
+            $(el).html('');
+
+            for (var j = 0; j < 5; j++) {
+
+                if (ratingValue > 0) {
+                    $(el).append('<span class="rating-pound active">&pound</span>');
+                    ratingValue--;
+                } else {
+                    $(el).append('<span class="rating-pound disabled">&pound</span>');
+                }
+            }
+        }
+    };
+
+    $(".bootpag").on('click', '*', function(event) {
+        var page = $(this).attr('data-lp');
+        ratingFunction(page);
+    });
+    window.onload = ratingFunction;
+    $("#searchButton").click(ratingFunction);
+    $("#dropdown").change(ratingFunction);
+
 });

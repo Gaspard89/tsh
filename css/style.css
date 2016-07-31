@@ -21,9 +21,9 @@ body {
     background-color: white;
     padding: 20px;
     border-radius: 5px;
-    -webkit-box-shadow: 0px 0px 1px 4px rgba(0, 0, 0, 0.1);
-    -moz-box-shadow: 0px 0px 1px 4px rgba(0, 0, 0, 0.1);
-    box-shadow: 0px 0px 1px 4px rgba(0, 0, 0, 0.1); }
+    -webkit-box-shadow: 0px 0px 1px 4px rgba(0, 0, 0, 0.1) ;
+    -moz-box-shadow: 0px 0px 1px 4px rgba(0, 0, 0, 0.1) ;
+    box-shadow: 0px 0px 1px 4px rgba(0, 0, 0, 0.1) ; }
     .main-content .listing .listing-header {
       border-bottom: 1px solid #e8e8e8;
       padding-bottom: 20px; }
@@ -54,11 +54,26 @@ body {
           padding: 15px 20px; }
           .main-content .listing .listing-content table tbody td:first-child {
             text-align: left; }
+        .main-content .listing .listing-content table tbody .ratingValue {
+          padding: 12px 20px; }
+          .main-content .listing .listing-content table tbody .ratingValue .rating-pound {
+            padding: 0 7px;
+            margin: 0 5px;
+            font-weight: bold;
+            font-size: 18px;
+            border-radius: 50px; }
+          .main-content .listing .listing-content table tbody .ratingValue .active {
+            color: #ffffff;
+            background-color: #2f8fbb;
+            border: 1px solid #2f8fbb; }
+          .main-content .listing .listing-content table tbody .ratingValue .disabled {
+            color: #686868;
+            background-color: #fcfdfd;
+            border: 1px solid #e8e8e8; }
         .main-content .listing .listing-content table tbody tr {
           cursor: pointer; }
           .main-content .listing .listing-content table tbody tr:hover {
-            background-color: #2f8fbb;
-            color: white;
+            background-color: #e9ebec;
             -webkit-transition: all 0.3s ease;
             -moz-transition: all 0.3s ease;
             -ms-transition: all 0.3s ease;
@@ -72,3 +87,16 @@ body {
         padding: 3px 10px;
         color: #686868;
         background-color: #f9f9f9; }
+        .main-content .listing .listing-content .pagination-buttons .pagination li a:active {
+          -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75) inset;
+          -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75) inset;
+          box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75) inset;
+          background-color: #e8e8e8; }
+      .main-content .listing .listing-content .pagination-buttons .pagination li.active a {
+        -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75) inset;
+        -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75) inset;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75) inset;
+        background-color: #686868;
+        border: none;
+        color: #ffffff;
+        font-weight: bold; }

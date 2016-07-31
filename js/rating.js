@@ -10,10 +10,10 @@ $(function() {
             for (var j = 0; j < 5; j++) {
 
                 if (ratingValue > 0) {
-                    $(el).append('<span>k</span>');
+                    $(el).append('<span class="rating-pound active">&pound</span>');
                     ratingValue--;
                 } else {
-                    $(el).append('<span>c</span>');
+                    $(el).append('<span class="rating-pound disabled">&pound</span>');
                 }
             }
         }
