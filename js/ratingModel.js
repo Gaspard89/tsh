@@ -49,6 +49,15 @@ $(function() {
             self.ProcessRequest(url);
         };
 
+                self.modalHtml = ko.observable();
+        self.showModal = function(item){
+          console.log(item);
+          console.log(item.payment_supplier);
+          self.modalHtml('<div id="modal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="gridSystemModalLabel">Modal title</h4><p>'+item.payment_supplier+'</p><p>'+item.payment_ref+'</p><p>'+item.payment_cost_rating+'</p><p>'+item.payment_amount+'</p></div></div></div>');
+
+        };
+
+
         $(".bootpag").on('click','*', function (event) {
           var page = $(this).attr('data-lp');
           self.currentPage(page);
