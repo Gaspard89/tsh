@@ -14,107 +14,164 @@ body {
   font-family: $font-stack;
   background-image: url("../images/background.png");
   background-repeat: repeat;
+  @include breakpoint(tablet) {
+    display: block;
+    background-image: none;
+  }
 }
 
 .main-content {
   display: table-cell;
   text-align: center;
   vertical-align: middle;
-  .listing {
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    @include box-shadow(0px, 0px, 1px, 4px, rgba(0,0,0,0.1));
-    .listing-header {
-      border-bottom: 1px solid $gray;
-      padding-bottom: 20px;
-      .header {
-        color: $blue;
-        font-size: 50px;
-        font-weight: 300;
-      }
+  @include breakpoint(tablet) {
+    display: block;
+    height: 100%;
+  }
+  .listing-container {
+    @include breakpoint(tablet) {
+      padding: 0;
+      margin: 0;
+      height: 100%;
     }
-    .listing-search {
-      padding: 20px 0;
-      .search-item {
-        margin: 0 5px;
-      }
-      .search-input {
-        min-width: 300px;
-      }
-      button {
-        padding: 6px 20px;
-      }
-    }
-    .listing-content {
-      table {
-        border-radius: 5px;
-        th {
-          border: none;
-          background-color: $light-gray;
-          padding: 20px;
-          color: $dark-gray;
-          &:nth-last-child(-n+3) {
-            text-align: center;
-          }
-        }
-        tbody {
-          color: $dark-gray;
-          td {
-            padding: 15px 20px;
-            &:first-child {
-              text-align: left;
-            }
-          }
-          .ratingValue {
-            padding: 12px 20px;
-            .rating-pound {
-              padding: 0 7px;
-              margin: 0 5px;
-              font-weight: bold;
-              font-size: 18px;
-              border-radius: 50px;
-            }
-            .active {
-              color: $white;
-              background-color: $blue;
-              border: 1px solid $blue;
-            }
-            .disabled {
-              color: $dark-gray;
-              background-color: $darkWhite;
-              border: 1px solid $gray;
-            }
-          }
-          tr {
-            cursor: pointer;
-            &:hover {
-              background-color: $light-gray;
-              @include transition (all, 0.3s, ease);
-            }
-          }
+    .listing {
+      background-color: white;
+      padding: 20px;
+      border-radius: 5px;
+      @include box-shadow(0px, 0px, 1px, 4px, rgba(0,0,0,0.1));
+      .listing-header {
+        border-bottom: 1px solid $gray;
+        padding-bottom: 20px;
+        .header {
+          color: $blue;
+          font-size: 50px;
+          font-weight: 300;
         }
       }
-      .pagination-buttons .pagination {
-        margin: 0;
-        li a {
-          margin: 0 3px;
-          border-radius: 3px;
-          padding: 3px 10px;
-          color: $dark-gray;
-          background-color: #f9f9f9;
-          &:active {
+      .listing-search {
+        padding: 20px 0;
+        .search-item {
+          margin: 0 5px;
+        }
+        .search-input {
+          min-width: 300px;
+          @include breakpoint(tablet) {
+            min-width: inherit;
+            width: 100%;
+          }
+        }
+        button {
+          padding: 6px 20px;
+        }
+        #bindList {
+          padding: 10px 0;
+          margin: 0 5px;
+        }
+      }
+      .listing-content {
+        table {
+          border-radius: 5px;
+          th {
+            border: none;
+            background-color: $light-gray;
+            padding: 20px;
+            color: $dark-gray;
+            &:nth-last-child(-n+3) {
+              text-align: center;
+            }
+          }
+          tbody {
+            color: $dark-gray;
+            td {
+              padding: 15px 20px;
+              &:first-child {
+                text-align: left;
+              }
+            }
+            .ratingValue {
+              padding: 12px 20px;
+              .rating-pound {
+                padding: 0 7px;
+                margin: 0 5px;
+                font-weight: bold;
+                font-size: 18px;
+                border-radius: 50px;
+                @include breakpoint(tablet) {
+                  padding: 0px 6px;
+                  margin: 0 2px;
+                  font-size: 14px;
+                }
+              }
+              .active {
+                color: $white;
+                background-color: $blue;
+                border: 1px solid $blue;
+              }
+              .disabled {
+                color: $dark-gray;
+                background-color: $darkWhite;
+                border: 1px solid $gray;
+              }
+            }
+            tr {
+              cursor: pointer;
+              &:hover {
+                background-color: $light-gray;
+                @include transition (all, 0.3s, ease);
+              }
+            }
+          }
+        }
+        .pagination-buttons .pagination {
+          margin: 0;
+          li a {
+            margin: 0 3px;
+            border-radius: 3px;
+            padding: 3px 10px;
+            color: $dark-gray;
+            background-color: #f9f9f9;
+            &:active {
+              @include box-shadow(0px, 0px, 10px, 0px, rgba(0,0,0,0.75), inset);
+              background-color: $gray;
+            }
+          }
+          li.active a {
             @include box-shadow(0px, 0px, 10px, 0px, rgba(0,0,0,0.75), inset);
-            background-color: $gray;
+            background-color: $dark-gray;
+            border: none;
+            color: $white;
+            font-weight: bold;
           }
         }
-        li.active a {
-          @include box-shadow(0px, 0px, 10px, 0px, rgba(0,0,0,0.75), inset);
-          background-color: $dark-gray;
-          border: none;
-          color: $white;
-          font-weight: bold;
-        }
+      }
+      @include breakpoint(tablet) {
+        border-radius: 0;
+        box-shadow: none;
+        height: 100%;
+      }
+    }
+  }
+}
+
+.modal {
+  display: table;
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+  .modal-dialog {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    .modal-content {
+      width: inherit;
+      height: inherit;
+      margin: 0 auto;
+      .left-column {
+        text-align: right;
+        font-weight: bold;
+      }
+      .right-column {
+        text-align: left;
       }
     }
   }

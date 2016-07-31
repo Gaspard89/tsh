@@ -24,8 +24,8 @@ $white: #ffffff;
 }
 
 @mixin breakpoint($point) {
-    @else if $point == tablet {
-         @media (max-width: 768px){
+    @if $point == tablet {
+         @media (max-width: 767px){
             @content;
         }
     }

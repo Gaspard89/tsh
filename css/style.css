@@ -12,87 +12,112 @@ body {
   font-family: "Source Sans Pro", sans-serif;
   background-image: url("../images/background.png");
   background-repeat: repeat; }
+  @media (max-width: 767px) {
+    body {
+      display: block;
+      background-image: none; } }
 
 .main-content {
   display: table-cell;
   text-align: center;
   vertical-align: middle; }
-  .main-content .listing {
+  @media (max-width: 767px) {
+    .main-content {
+      display: block;
+      height: 100%; } }
+  @media (max-width: 767px) {
+    .main-content .listing-container {
+      padding: 0;
+      margin: 0;
+      height: 100%; } }
+  .main-content .listing-container .listing {
     background-color: white;
     padding: 20px;
     border-radius: 5px;
     -webkit-box-shadow: 0px 0px 1px 4px rgba(0, 0, 0, 0.1) ;
     -moz-box-shadow: 0px 0px 1px 4px rgba(0, 0, 0, 0.1) ;
     box-shadow: 0px 0px 1px 4px rgba(0, 0, 0, 0.1) ; }
-    .main-content .listing .listing-header {
+    .main-content .listing-container .listing .listing-header {
       border-bottom: 1px solid #e8e8e8;
       padding-bottom: 20px; }
-      .main-content .listing .listing-header .header {
+      .main-content .listing-container .listing .listing-header .header {
         color: #2f8fbb;
         font-size: 50px;
         font-weight: 300; }
-    .main-content .listing .listing-search {
+    .main-content .listing-container .listing .listing-search {
       padding: 20px 0; }
-      .main-content .listing .listing-search .search-item {
+      .main-content .listing-container .listing .listing-search .search-item {
         margin: 0 5px; }
-      .main-content .listing .listing-search .search-input {
+      .main-content .listing-container .listing .listing-search .search-input {
         min-width: 300px; }
-      .main-content .listing .listing-search button {
+        @media (max-width: 767px) {
+          .main-content .listing-container .listing .listing-search .search-input {
+            min-width: inherit;
+            width: 100%; } }
+      .main-content .listing-container .listing .listing-search button {
         padding: 6px 20px; }
-    .main-content .listing .listing-content table {
+      .main-content .listing-container .listing .listing-search #bindList {
+        padding: 10px 0;
+        margin: 0 5px; }
+    .main-content .listing-container .listing .listing-content table {
       border-radius: 5px; }
-      .main-content .listing .listing-content table th {
+      .main-content .listing-container .listing .listing-content table th {
         border: none;
         background-color: #e9ebec;
         padding: 20px;
         color: #686868; }
-        .main-content .listing .listing-content table th:nth-last-child(-n+3) {
+        .main-content .listing-container .listing .listing-content table th:nth-last-child(-n+3) {
           text-align: center; }
-      .main-content .listing .listing-content table tbody {
+      .main-content .listing-container .listing .listing-content table tbody {
         color: #686868; }
-        .main-content .listing .listing-content table tbody td {
+        .main-content .listing-container .listing .listing-content table tbody td {
           padding: 15px 20px; }
-          .main-content .listing .listing-content table tbody td:first-child {
+          .main-content .listing-container .listing .listing-content table tbody td:first-child {
             text-align: left; }
-        .main-content .listing .listing-content table tbody .ratingValue {
+        .main-content .listing-container .listing .listing-content table tbody .ratingValue {
           padding: 12px 20px; }
-          .main-content .listing .listing-content table tbody .ratingValue .rating-pound {
+          .main-content .listing-container .listing .listing-content table tbody .ratingValue .rating-pound {
             padding: 0 7px;
             margin: 0 5px;
             font-weight: bold;
             font-size: 18px;
             border-radius: 50px; }
-          .main-content .listing .listing-content table tbody .ratingValue .active {
+            @media (max-width: 767px) {
+              .main-content .listing-container .listing .listing-content table tbody .ratingValue .rating-pound {
+                padding: 0px 6px;
+                margin: 0 2px;
+                font-size: 14px; } }
+          .main-content .listing-container .listing .listing-content table tbody .ratingValue .active {
             color: #ffffff;
             background-color: #2f8fbb;
             border: 1px solid #2f8fbb; }
-          .main-content .listing .listing-content table tbody .ratingValue .disabled {
+          .main-content .listing-container .listing .listing-content table tbody .ratingValue .disabled {
             color: #686868;
             background-color: #fcfdfd;
             border: 1px solid #e8e8e8; }
-        .main-content .listing .listing-content table tbody tr {
+        .main-content .listing-container .listing .listing-content table tbody tr {
           cursor: pointer; }
-          .main-content .listing .listing-content table tbody tr:hover {
+          .main-content .listing-container .listing .listing-content table tbody tr:hover {
             background-color: #e9ebec;
             -webkit-transition: all 0.3s ease;
             -moz-transition: all 0.3s ease;
             -ms-transition: all 0.3s ease;
             -o-transition: all 0.3s ease;
             transition: all 0.3s ease; }
-    .main-content .listing .listing-content .pagination-buttons .pagination {
+    .main-content .listing-container .listing .listing-content .pagination-buttons .pagination {
       margin: 0; }
-      .main-content .listing .listing-content .pagination-buttons .pagination li a {
+      .main-content .listing-container .listing .listing-content .pagination-buttons .pagination li a {
         margin: 0 3px;
         border-radius: 3px;
         padding: 3px 10px;
         color: #686868;
         background-color: #f9f9f9; }
-        .main-content .listing .listing-content .pagination-buttons .pagination li a:active {
+        .main-content .listing-container .listing .listing-content .pagination-buttons .pagination li a:active {
           -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75) inset;
           -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75) inset;
           box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75) inset;
           background-color: #e8e8e8; }
-      .main-content .listing .listing-content .pagination-buttons .pagination li.active a {
+      .main-content .listing-container .listing .listing-content .pagination-buttons .pagination li.active a {
         -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75) inset;
         -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75) inset;
         box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75) inset;
@@ -100,3 +125,27 @@ body {
         border: none;
         color: #ffffff;
         font-weight: bold; }
+    @media (max-width: 767px) {
+      .main-content .listing-container .listing {
+        border-radius: 0;
+        box-shadow: none;
+        height: 100%; } }
+
+.modal {
+  display: table;
+  width: 100%;
+  height: 100%;
+  font-size: 16px; }
+  .modal .modal-dialog {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle; }
+    .modal .modal-dialog .modal-content {
+      width: inherit;
+      height: inherit;
+      margin: 0 auto; }
+      .modal .modal-dialog .modal-content .left-column {
+        text-align: right;
+        font-weight: bold; }
+      .modal .modal-dialog .modal-content .right-column {
+        text-align: left; }

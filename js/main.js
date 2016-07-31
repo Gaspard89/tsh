@@ -53,7 +53,7 @@ $(function() {
 
         //Modal
         self.showModal = function(item) {
-            self.modalHtml('<div id="modal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="gridSystemModalLabel">Modal title</h4><p>' + item.payment_supplier + '</p><p>' + item.payment_ref + '</p><p>' + item.payment_cost_rating + '</p><p>' + item.payment_amount + '</p></div></div></div>');
+            self.modalHtml('<div id="modal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="myModalLabel">Details</h4></div><div class="modal-body"><div class="row"><div class="col-xs-6 left-column">SUPPLIER:</div><div class="col-xs-6 right-column">' + item.payment_supplier + '</div></div><div class="row"><div class="col-xs-6 left-column">REFERENCE:</div><div class="col-xs-6 right-column">' + item.payment_ref + '</div></div><div class="row"><div class="col-xs-6 left-column">POUND RATING:</div><div class="col-xs-6 right-column">' + item.payment_cost_rating + '</div></div><div class="row"><div class="col-xs-6 left-column">VALUE:</div><div class="col-xs-6 right-column">' + item.payment_amount + '</div></div></div></div></div>');
 
         };
 
