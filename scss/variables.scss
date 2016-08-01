@@ -9,6 +9,7 @@ $blue: #2f8fbb;
 $cornBlue: #61bce9;
 $darkWhite: #fcfdfd;
 $white: #ffffff;
+$snow: #f9f9f9;
 
 @mixin box-shadow($horizontal, $vertical, $blur, $spread, $color, $inset:"") {
     -webkit-box-shadow: $horizontal $vertical $blur $spread $color #{$inset};

@@ -35,7 +35,7 @@ body {
       height: 100%;
     }
     .listing {
-      background-color: white;
+      background-color: $white;
       padding: 20px;
       border-radius: 5px;
       @include box-shadow(0px, 0px, 1px, 4px, rgba(0,0,0,0.1));
@@ -129,7 +129,7 @@ body {
             border-radius: 3px;
             padding: 3px 10px;
             color: $dark-gray;
-            background-color: #f9f9f9;
+            background-color: $snow;
             &:active {
               @include box-shadow(0px, 0px, 10px, 0px, rgba(0,0,0,0.75), inset);
               background-color: $gray;

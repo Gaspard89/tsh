@@ -16,14 +16,14 @@ gulp.task('lint', function() {
 
 
 gulp.task('sass', function() {
-    return gulp.src('scss/*.scss')
+    return gulp.src('scss/style.scss')
         .pipe(sass())
         .pipe(gulp.dest('css'));
 });
 
 
 gulp.task('scripts', function() {
-    return gulp.src('js/*.js')
+    return gulp.src(['js/main.js','js/pagination.js','js/rating.js','!js/bootpag.js'])
         .pipe(concat('all.js'))
         .pipe(gulp.dest('dist'))
         .pipe(rename('all.min.js'))
