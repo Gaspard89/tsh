@@ -71,6 +71,16 @@ $(function() {
     ko.applyBindings(new apiModel());
 });
 
+$(function (){
+  $('.page-navigation').bootpag({
+     total: 15,
+     page: 1,
+     maxVisible: 4
+  }).on('page', function(event, num){
+      //
+  });
+});
+
 $(function() {
     var ratingFunction = function() {
         var ratingElements = $(".ratingValue");
